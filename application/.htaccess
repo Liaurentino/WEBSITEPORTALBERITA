@@ -1,6 +1,19 @@
-<IfModule authz_core_module>
-    Require all denied
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevents access to the "system" and "application" directories
+    RewriteCond %{REQUEST_URI} ^system.* [OR]
+    RewriteCond %{REQUEST_URI} ^application.* [OR]
+    RewriteCond %{REQUEST_FILENAME} = [OR]
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+
+    # Rewrite all other URLs to index.php/URL
+    RewriteRule ^(.*)$ index.php/$1 [PT,L]
 </IfModule>
-<IfModule !authz_core_module>
-    Deny from all
+
+<IfModule !mod_rewrite.c>
+    # If we don't have mod_rewrite installed, all 404's
+    # can be sent to index.php, and everything works as normal.
+    ErrorDocument 404 /index.php
 </IfModule>

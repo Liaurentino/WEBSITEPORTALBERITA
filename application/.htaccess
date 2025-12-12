@@ -1,19 +1,14 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /UASWEB/
 
-    # Prevents access to the "system" and "application" directories
+    # Mencegah akses langsung ke folder system dan application
     RewriteCond %{REQUEST_URI} ^system.* [OR]
     RewriteCond %{REQUEST_URI} ^application.* [OR]
     RewriteCond %{REQUEST_FILENAME} = [OR]
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
 
-    # Rewrite all other URLs to index.php/URL
+    # Arahkan semua request lain ke index.php
     RewriteRule ^(.*)$ index.php/$1 [PT,L]
-</IfModule>
-
-<IfModule !mod_rewrite.c>
-    # If we don't have mod_rewrite installed, all 404's
-    # can be sent to index.php, and everything works as normal.
-    ErrorDocument 404 /index.php
 </IfModule>

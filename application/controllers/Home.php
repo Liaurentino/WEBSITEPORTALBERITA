@@ -1,43 +1,68 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Home extends CI_Controller {
     
-    public function index() {
+    public function __construct() {
+        parent::__construct();
         $this->load->model('News_model');
-        
-        $data['title'] = 'Adventure Today - Jelajahi Dunia';
-        $data['hot_news'] = $this->News_model->get_hot_news();
-        $data['trending'] = $this->News_model->get_trending_news();
+        $this->load->helper('text'); 
+    }
 
+    public function index() {
+   
+        $data['title'] = 'Adventure Today - Temukan Cerita Petualanganmu';
+
+        $news_array = $this->News_model->get_all_news_complete(6); 
+    
+        $data['hot_news'] = json_decode(json_encode($news_array)); 
+        $data['stats'] = $this->News_model->get_site_stats();
         $this->load->view('layout/header', $data);
         $this->load->view('home/index', $data); 
-        $this->load->view('layout/footer');
+        $this->load->view('layout/footer', $data);
     }
 
-    // Melihat detail berita
-    public function view($slug = NULL) {
-        $this->load->model('News_model');
-        $data['news'] = $this->News_model->get_news($slug);
+    // Halaman Detail Berita
+    public function detail($slug = NULL) {
+    
+        $news_item = $this->News_model->get_news_detail($slug);
 
-        if (empty($data['news'])) {
+        if (empty($news_item)) {
             show_404();
         }
+        $data['news'] = (object) $news_item;
+        $data['title'] = $data['news']->title . ' - Adventure Today';
 
-        $data['title'] = $data['news']['title'];
+        $data['is_liked'] = FALSE;
+        if($this->session->userdata('user_id')){
+            $check_like = $this->db->get_where('likes', [
+                'user_id' => $this->session->userdata('user_id'), 
+                'news_id' => $data['news']->id
+            ]);
+            if($check_like->num_rows() > 0){
+                $data['is_liked'] = TRUE;
+            }
+        }
 
         $this->load->view('layout/header', $data);
-        $this->load->view('news/detail', $data);
-        $this->load->view('layout/footer');
+        $this->load->view('news/detail', $data); 
+        $this->load->view('layout/footer', $data);
     }
-    
-    // Fitur Like
-    public function like($id) {
-        if(!$this->session->userdata('logged_in')){
-            redirect('auth/login');
-        }
-        $this->load->model('News_model');
-        $this->News_model->toggle_like($this->session->userdata('user_id'), $id);
+
+    // Fitur Pencarian (Search)
+    public function search() {
+        $keyword = $this->input->get('q');
+        $data['title'] = 'Cari: ' . $keyword;
         
-        // Kembali ke halaman sebelumnya
-        redirect($_SERVER['HTTP_REFERER']);
+        $this->db->like('title', $keyword);
+        $this->db->or_like('content', $keyword);
+        $news_array = $this->News_model->get_all_news_complete(20);
+        
+        $data['hot_news'] = json_decode(json_encode($news_array));
+        $data['is_search'] = TRUE; 
+
+        $this->load->view('layout/header', $data);
+        $this->load->view('home/index', $data);
+        $this->load->view('layout/footer');
     }
 }

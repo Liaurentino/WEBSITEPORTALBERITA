@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 /**
  * CodeIgniter
  *
@@ -54,7 +55,9 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-
+     if (version_compare(PHP_VERSION, '8.2.0') >= 0) {
+        error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+    }
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

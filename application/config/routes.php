@@ -15,7 +15,7 @@ $route['logout'] = 'auth/logout';
 // Home Routes
 $route['home'] = 'home/index';
 $route['home/search'] = 'home/search';
-$route['news'] = 'home/arsip';
+$route['home/arsip'] = 'home/arsip';
 $route['home/detail/(:any)'] = 'home/detail/$1';
 $route['home/like/(:num)'] = 'home/like/$1';
 

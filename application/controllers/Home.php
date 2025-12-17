@@ -86,12 +86,23 @@ class Home extends CI_Controller {
         $this->load->view('news/detail', $data);
         $this->load->view('layout/footer', $data);
     }
-    public function news() {
-        $data['title'] = 'Semua Berita - Adventure Today';
-        $data['page_title'] = 'Arsip Semua Petualangan'; 
-        
-        $data['news_list'] = $this->News_model->get_all_news();
+    public function getallnews() {
+        $this->db->select('news.*, users.username, 
+        (SELECT COUNT(*) FROM likes WHERE likes.news_id = news.id) as likes_count,
+        (SELECT COUNT(*) FROM comments WHERE comments.news_id = news.id) as comments_count');
+    
+    $this->db->from('news');
+    $this->db->join('users', 'users.id = news.user_id'); 
+    
+    $this->db->order_by('news.created_at', 'DESC'); 
+    $query = $this->db->get();
+    return $query->result_array();
+    }
+    public function arsip() {
+        $data['title'] = 'Arsip Berita - Adventure Today';
+        $data['page_title'] = 'Arsip Semua Berita'; 
 
+        $data['news_list'] = $this->News_model->getallnews(); 
         $this->load->view('layout/header', $data);
         $this->load->view('home/arsip', $data); 
         $this->load->view('layout/footer', $data);

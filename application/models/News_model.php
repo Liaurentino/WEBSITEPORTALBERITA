@@ -12,14 +12,14 @@ class News_model extends CI_Model {
         $query = $this->db->get_where('news', ['id' => $id]);
         return $query->row_array();
     }
-    
+
     // Get All News
-    public function get_all_news() {
+    public function getallnews() {
     $this->db->select('news.*, users.username, 
         (SELECT COUNT(*) FROM likes WHERE likes.news_id = news.id) as likes_count,
         (SELECT COUNT(*) FROM comments WHERE comments.news_id = news.id) as comments_count');
     $this->db->from('news');
-    $this->db->join('users', 'users.id = news.author_id');
+    $this->db->join('users', 'users.id = news.user_id');
     $this->db->order_by('news.created_at', 'DESC'); 
     
     $query = $this->db->get();

@@ -1,14 +1,11 @@
 <div class="container main-container">
     
     <header class="archive-header">
-        <p class="archive-breadcrumb">
-            <a href="<?php echo base_url(); ?>">Home</a> / Arsip
-        </p>
         <h1 class="archive-title">
             <?php echo isset($page_title) ? $page_title : 'Semua Berita'; ?>
         </h1>
         <p class="archive-subtitle">
-            Menampilkan seluruh koleksi cerita petualangan dari komunitas.
+        Menampilkan seluruh koleksi cerita petualangan dari komunitas.
         </p>
     </header>
 

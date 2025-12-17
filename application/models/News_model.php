@@ -12,6 +12,19 @@ class News_model extends CI_Model {
         $query = $this->db->get_where('news', ['id' => $id]);
         return $query->row_array();
     }
+    
+    // Get All News
+    public function get_all_news() {
+    $this->db->select('news.*, users.username, 
+        (SELECT COUNT(*) FROM likes WHERE likes.news_id = news.id) as likes_count,
+        (SELECT COUNT(*) FROM comments WHERE comments.news_id = news.id) as comments_count');
+    $this->db->from('news');
+    $this->db->join('users', 'users.id = news.author_id');
+    $this->db->order_by('news.created_at', 'DESC'); 
+    
+    $query = $this->db->get();
+    return $query->result_array();
+}
 
     // Get latest news with user info and like count
     public function get_latest_news($limit = 9) {
@@ -44,7 +57,6 @@ class News_model extends CI_Model {
 
     // Get news by slug with all details
     public function get_news_by_slug($slug) {
-        // PERUBAHAN: Menambahkan u.bio ke dalam select
         $this->db->select('n.*, u.username, u.bio, u.id as author_id, COUNT(DISTINCT l.id) as likes_count, COUNT(DISTINCT c.id) as comments_count');
         $this->db->from('news n');
         $this->db->join('users u', 'n.user_id = u.id', 'left');

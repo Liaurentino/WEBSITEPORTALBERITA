@@ -9,9 +9,9 @@
                 <?php if (!$this->session->userdata('user_id')): ?>
                     <a href="<?php echo base_url('auth/register'); ?>" class="btn btn-primary btn-large">Mulai Berbagi</a>
                 <?php else: ?>
-                    <a href="<?php echo base_url('dashboard/create'); ?>" class="btn btn-primary btn-large">Tulis Cerita</a>
+                    <a href="<?php echo base_url('dashboard/create'); ?>" class="btn btn-primary btn-large">Tulis Berita</a>
                 <?php endif; ?>
-                <a href="#trending" class="btn btn-outline btn-large">Baca Cerita</a>
+                <a href="#trending" class="btn btn-outline btn-large">Baca Berita</a>
             </div>
             
             <div class="hero-stats">
@@ -38,10 +38,10 @@
     </div>
 </section>
 
-<section class="section" id="trending">
+<section class="section">
     <div class="section-header">
-        <h2> Trending Sekarang</h2>
-        <a href="#" class="view-all">Lihat Semua → </a>
+        <h2>Trending Sekarang</h2>
+        <a href="<?php echo base_url('home/trending'); ?>" class="view-all">Lihat Semua →</a>
     </div>
     
     <div class="news-grid">
@@ -74,7 +74,7 @@
 <section class="section">
     <div class="section-header">
         <h2>Berita Terbaru</h2>
-        <a href="#" class="view-all">Lihat Semua →</a>
+        <a href="<?php echo base_url('home/latest'); ?>" class="view-all">Lihat Semua →</a>
     </div>
     
     <div class="news-grid">

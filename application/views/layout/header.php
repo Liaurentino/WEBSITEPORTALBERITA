@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/news.css'); ?>">
-       <link rel="stylesheet" href="<?= base_url('assets/css/admin.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/admin.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/auth.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dashboard.css'); ?>">
-        <link rel="stylesheet" href="<?= base_url('assets/css/alert.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/alert.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/arsip.css'); ?>">
 </head>
 <body>
     <nav class="navbar">
@@ -42,6 +43,12 @@
                     $seg1 = $this->uri->segment(1);
                     $seg2 = $this->uri->segment(2);
                 ?>
+                 <li>
+                    <a href="<?php echo base_url('home/arsip'); ?>" 
+                       class="nav-link <?php echo ($seg2 == 'arsip') ? 'active' : ''; ?>">
+                        Lihat Semua
+                    </a>
+                </li>
 
                 <li>
                     <a href="<?php echo base_url('home/trending'); ?>" 

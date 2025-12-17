@@ -5,7 +5,7 @@
             <?php echo isset($page_title) ? $page_title : 'Semua Berita'; ?>
         </h1>
         <p class="archive-subtitle">
-        Menampilkan seluruh koleksi cerita petualangan dari komunitas.
+        Menampilkan seluruh koleksi cerita petualangan.
         </p>
     </header>
 

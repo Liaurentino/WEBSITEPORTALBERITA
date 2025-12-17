@@ -1,21 +1,22 @@
 <!-- SEARCH RESULTS SECTION -->
 <section class="section">
-    <div class="search-header" style="margin-bottom: 2rem;">
-        <h2 style="margin-bottom: 1rem;">Hasil Pencarian: "<?php echo htmlspecialchars($keyword); ?>"</h2>
-        
-        <form action="<?php echo base_url('home/search'); ?>" method="GET" class="search-form-hero" style="margin-bottom: 2rem;">
-            <input type="text" name="q" placeholder="Cari berita..." value="<?php echo htmlspecialchars($keyword); ?>" required>
-            <button type="submit">🔍</button>
-        </form>
+    <div class="search-header">
+        <h2 class="search-title">
+            Hasil Pencarian: "<?php echo htmlspecialchars($keyword); ?>"
+        </h2>
 
         <?php if (empty($search_results)): ?>
-            <div class="no-results" style="text-align: center; padding: 3rem; background: var(--white); border-radius: var(--radius);">
-                <h3 style="margin-bottom: 1rem; color: var(--text-gray);">Tidak ada hasil</h3>
-                <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Kami tidak menemukan berita yang sesuai dengan pencarian "<?php echo htmlspecialchars($keyword); ?>"</p>
-                <a href="<?php echo base_url('home'); ?>" class="btn btn-primary">Kembali ke Beranda</a>
+            <div class="no-results">
+                <h3 class="no-results-title">Tidak ada hasil</h3>
+                <p class="no-results-text">
+                    Kami tidak menemukan berita yang sesuai dengan pencarian "<?php echo htmlspecialchars($keyword); ?>"
+                </p>
+                <a href="<?php echo base_url('home'); ?>" class="btn btn-primary">
+                    Kembali ke Beranda
+                </a>
             </div>
         <?php else: ?>
-            <p style="color: var(--text-gray); margin-bottom: 1rem;">
+            <p class="search-count">
                 Ditemukan <?php echo count($search_results); ?> hasil pencarian
             </p>
         <?php endif; ?>
@@ -26,18 +27,35 @@
             <?php foreach ($search_results as $news): ?>
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo base_url('assets/uploads/' . $news['image']); ?>" alt="<?php echo htmlspecialchars($news['title']); ?>">
+                        <img src="<?php echo base_url('assets/uploads/' . $news['image']); ?>"
+                             alt="<?php echo htmlspecialchars($news['title']); ?>">
                         <span class="card-category">Hasil Pencarian</span>
                     </div>
+
                     <div class="card-content">
                         <div class="card-meta">
-                            📅 <?php echo date('d M Y', strtotime($news['created_at'])); ?> • 👤 <?php echo htmlspecialchars($news['username']); ?>
+                            📅 <?php echo date('d M Y', strtotime($news['created_at'])); ?>
+                            • 👤 <?php echo htmlspecialchars($news['username']); ?>
                         </div>
-                        <h3><a href="<?php echo base_url('home/detail/' . $news['slug']); ?>"><?php echo htmlspecialchars($news['title']); ?></a></h3>
-                        <p><?php echo character_limiter(strip_tags($news['content']), 120); ?></p>
+
+                        <h3>
+                            <a href="<?php echo base_url('home/detail/' . $news['slug']); ?>">
+                                <?php echo htmlspecialchars($news['title']); ?>
+                            </a>
+                        </h3>
+
+                        <p>
+                            <?php echo character_limiter(strip_tags($news['content']), 120); ?>
+                        </p>
+
                         <div class="card-footer">
-                            <a href="<?php echo base_url('home/detail/' . $news['slug']); ?>" class="read-more">Baca Selengkapnya</a>
-                            <span class="likes-count">❤️ <?php echo $news['likes_count']; ?></span>
+                            <a href="<?php echo base_url('home/detail/' . $news['slug']); ?>"
+                               class="read-more">
+                                Baca Selengkapnya
+                            </a>
+                            <span class="likes-count">
+                                ❤️ <?php echo $news['likes_count']; ?>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -46,4 +64,4 @@
     <?php endif; ?>
 </section>
 
-</div> <!-- End Container -->
+</div>

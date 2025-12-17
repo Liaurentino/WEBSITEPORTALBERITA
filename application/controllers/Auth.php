@@ -10,15 +10,10 @@ class Auth extends CI_Controller {
     }
 
     public function login() {
-        // 1. CEK STATUS LOGIN SAAT INI
-        // Jika user iseng buka url /auth/login padahal sudah login
         if ($this->session->userdata('user_id')) {
             if ($this->session->userdata('role') == 'admin') {
                 redirect('admin');
             } else {
-                // PERUBAHAN DI SINI:
-                // Dulu: redirect('dashboard');
-                // Sekarang: redirect ke home
                 redirect('home'); 
             }
         }
@@ -58,13 +53,9 @@ class Auth extends CI_Controller {
 
                     $this->session->set_flashdata('success', 'Selamat datang, ' . $user['username'] . '!');
                     
-                    // 2. LOGIKA REDIRECT SETELAH SUKSES LOGIN
                     if ($user['role'] == 'admin') {
-                        // Jika Admin -> Masuk ke Panel Admin (Dashboard Admin)
                         redirect('admin'); 
                     } else {
-                        // PERUBAHAN DI SINI:
-                        // Jika User Biasa -> Masuk ke Home (Halaman Berita)
                         redirect('home'); 
                     }
 
@@ -81,10 +72,7 @@ class Auth extends CI_Controller {
     }
 
     public function register() {
-        // Cek jika sudah login saat mau daftar
         if ($this->session->userdata('user_id')) {
-            // PERUBAHAN DI SINI JUGA:
-            // Kalau sudah login jangan ke dashboard, tapi ke home
             redirect('home');
         }
 

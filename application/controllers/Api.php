@@ -10,10 +10,8 @@ class Api extends CI_Controller {
         header('Content-Type: application/json');
     }
 
-    // ============================================
-    // LIKE FUNCTIONALITY
-    // ============================================
 
+    // LIKE FUNCTIONALITY
     public function toggle_like($news_id = NULL) {
         if (empty($news_id)) {
             echo json_encode(['success' => FALSE, 'message' => 'Invalid request']);
@@ -54,9 +52,7 @@ class Api extends CI_Controller {
         ]);
     }
 
-    // ============================================
     // COMMENT FUNCTIONALITY
-    // ============================================
 
     public function add_comment() {
         // Get JSON input
@@ -185,10 +181,8 @@ class Api extends CI_Controller {
         ]);
     }
 
-    // ============================================
+ 
     // SEARCH FUNCTIONALITY
-    // ============================================
-
     public function search() {
         $keyword = $this->input->get('q');
 
@@ -206,10 +200,8 @@ class Api extends CI_Controller {
         ]);
     }
 
-    // ============================================
+  
     // NEWS STATISTICS
-    // ============================================
-
     public function get_news_stats($news_id = NULL) {
         if (empty($news_id)) {
             echo json_encode(['success' => FALSE, 'message' => 'Invalid request']);
@@ -239,10 +231,7 @@ class Api extends CI_Controller {
         ]);
     }
 
-    // ============================================
-    // TRENDING NEWS
-    // ============================================
-
+    // GET TRENDING NEWS
     public function get_trending() {
         $limit = $this->input->get('limit', 6);
         $trending = $this->News_model->get_trending_news($limit);
@@ -254,10 +243,8 @@ class Api extends CI_Controller {
         ]);
     }
 
-    // ============================================
-    // LATEST NEWS
-    // ============================================
 
+    // GET LATEST NEWS
     public function get_latest() {
         $limit = $this->input->get('limit', 9);
         $latest = $this->News_model->get_latest_news($limit);

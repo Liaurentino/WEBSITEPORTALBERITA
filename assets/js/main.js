@@ -1,8 +1,3 @@
-/**
- * Adventure Today News - Main JavaScript
- * Handles interactions, AJAX calls, and UI updates
- */
-
 // ============================================
 // MOBILE MENU TOGGLE
 // ============================================

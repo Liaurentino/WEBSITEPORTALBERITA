@@ -1,0 +1,163 @@
+/* AUTH WRAPPER */
+.auth-wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* MAIN CARD */
+.auth-container {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* HEADER */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-dark);
+}
+
+.auth-header p {
+    margin: 0;
+    color: var(--text-gray);
+}
+
+/* REQUIRED */
+.required {
+    color: var(--danger);
+}
+
+/* REMEMBER */
+.remember-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.remember-group input {
+    width: auto;
+}
+
+/* SUBMIT */
+.auth-submit {
+    margin-bottom: 1rem;
+}
+
+/* DIVIDER */
+.auth-divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.auth-divider span {
+    background: var(--white);
+    padding: 0 0.5rem;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* LINKS */
+.auth-link {
+    text-align: center;
+}
+
+.auth-link p {
+    margin: 0;
+    color: var(--text-gray);
+}
+
+.auth-link a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* FOOTER */
+.auth-footer {
+    border-top: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-footer a {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.auth-info p {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.auth-info small {
+    color: var(--text-gray);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .auth-wrapper {
+        padding: 0 15px;
+    }
+
+    .auth-container {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* ERROR */
+.form-error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* BUTTON */
+.auth-submit {
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .auth-wrapper {
+        padding: 0 15px;
+    }
+
+    .auth-container {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+}

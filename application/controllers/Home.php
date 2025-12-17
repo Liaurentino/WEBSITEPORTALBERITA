@@ -13,16 +13,11 @@ class Home extends CI_Controller {
     public function index() {
         $data['title'] = 'Adventure Today - Temukan Cerita Petualanganmu';
         
-        // Get 6 hot news for carousel/featured
         $data['hot_news'] = $this->News_model->get_latest_news(6);
-        
-        // Get trending news based on likes
+    
         $data['trending_news'] = $this->News_model->get_trending_news(6);
-        
-        // Get recent news
         $data['recent_news'] = $this->News_model->get_latest_news(9);
         
-        // Get site statistics
         $data['stats'] = $this->News_model->get_site_stats();
         
         $this->load->view('layout/header', $data);
@@ -30,29 +25,27 @@ class Home extends CI_Controller {
         $this->load->view('layout/footer', $data);
     }
 
-    // --- TAMBAHAN BARU: Method Trending ---
+    // Fitur Untuk Trending 
     public function trending() {
-        $data['title'] = 'Berita Trending 🔥';
-        $data['page_title'] = '🔥 Trending Saat Ini';
+        $data['title'] = 'Berita Trending';
+        $data['page_title'] = 'Trending Saat Ini';
         
-        // Ambil lebih banyak berita trending (misal 12)
         $data['news_list'] = $this->News_model->get_trending_news(12);
         
         $this->load->view('layout/header', $data);
-        $this->load->view('home/list', $data); // Kita akan buat file view baru ini
+        $this->load->view('home/list', $data); 
         $this->load->view('layout/footer', $data);
     }
 
-    // --- TAMBAHAN BARU: Method Terbaru (Latest) ---
+    // Fitur untuk Terbaru (Latest) 
     public function latest() {
-        $data['title'] = 'Berita Terbaru 📰';
-        $data['page_title'] = '📰 Berita Terbaru';
+        $data['title'] = 'Berita Terbaru ';
+        $data['page_title'] = 'Berita Terbaru';
         
-        // Ambil lebih banyak berita terbaru (misal 12)
         $data['news_list'] = $this->News_model->get_latest_news(12);
         
         $this->load->view('layout/header', $data);
-        $this->load->view('home/list', $data); // Menggunakan view yang sama dengan trending
+        $this->load->view('home/list', $data); 
         $this->load->view('layout/footer', $data);
     }
 
@@ -127,8 +120,7 @@ class Home extends CI_Controller {
         }
 
         $user_id = $this->session->userdata('user_id');
-        
-        // Check if news exists
+    
         $news = $this->News_model->get_news_by_id($news_id);
         if (empty($news)) {
             echo json_encode(['success' => FALSE, 'message' => 'News not found']);
@@ -139,7 +131,6 @@ class Home extends CI_Controller {
         
         $total_likes = $this->News_model->get_likes_count($news_id);
         
-        // Check if user liked
         $is_liked = $this->db->get_where('likes', [
             'user_id' => $user_id,
             'news_id' => $news_id

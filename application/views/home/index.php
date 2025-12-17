@@ -40,7 +40,7 @@
 
 <section class="section" id="trending">
     <div class="section-header">
-        <h2>🔥 Trending Sekarang</h2>
+        <h2> Trending Sekarang</h2>
         <a href="#" class="view-all">Lihat Semua → </a>
     </div>
     
@@ -73,7 +73,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h2>📰 Berita Terbaru</h2>
+        <h2>Berita Terbaru</h2>
         <a href="#" class="view-all">Lihat Semua →</a>
     </div>
     

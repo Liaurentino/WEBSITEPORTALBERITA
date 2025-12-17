@@ -8,11 +8,7 @@ class Dashboard extends CI_Controller {
         $this->load->model('News_model');
         $this->load->model('User_model');
         $this->load->library('form_validation');
-        
-        // Load Helper String & Text
         $this->load->helper(array('string', 'text'));
-
-        // Check if user is logged in
         if (!$this->session->userdata('user_id')) {
             $this->session->set_flashdata('error', 'Silakan login terlebih dahulu');
             redirect('auth/login');
@@ -32,32 +28,28 @@ class Dashboard extends CI_Controller {
         $this->load->view('layout/footer', $data);
     }
 
-    // --- FITUR BARU: Edit Profile ---
+    // Edit Profile 
     public function profile() {
         $data['title'] = 'Edit Profil Saya';
         $user_id = $this->session->userdata('user_id');
-        
-        // Ambil data user terbaru dari database (termasuk bio)
+    
         $data['user'] = $this->User_model->get_user_by_id($user_id);
         
         $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/profile', $data); // Pastikan file profile.php sudah dibuat
+        $this->load->view('dashboard/profile', $data);
         $this->load->view('layout/footer', $data);
     }
 
-    // --- FITUR BARU: Proses Update Profile ---
+    // Update Profile 
     public function update_profile() {
         if ($this->input->method() !== 'post') {
             redirect('dashboard/profile');
         }
 
         $user_id = $this->session->userdata('user_id');
-        
-        // Validasi Input
         $this->form_validation->set_rules('username', 'Username', 'required|trim|min_length[3]');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         
-        // Validasi Password (hanya jika user mengisi field password)
         $new_password = $this->input->post('password');
         if (!empty($new_password)) {
             $this->form_validation->set_rules('password', 'Password Baru', 'min_length[6]');
@@ -69,21 +61,18 @@ class Dashboard extends CI_Controller {
             return;
         }
 
-        // Siapkan data update
+        // Update Data
         $update_data = [
             'username' => $this->input->post('username'),
             'email'    => $this->input->post('email'),
-            'bio'      => $this->input->post('bio') // Menyimpan data Bio
+            'bio'      => $this->input->post('bio') 
         ];
 
-        // Jika password diisi, enkripsi dan masukkan ke data update
+        // Enkripsi Password
         if (!empty($new_password)) {
             $update_data['password'] = password_hash($new_password, PASSWORD_DEFAULT);
         }
-
-        // Eksekusi Update ke Model
         if ($this->User_model->update_user($user_id, $update_data)) {
-            // Update Session Data (agar nama di navbar langsung berubah)
             $this->session->set_userdata('username', $update_data['username']);
             
             $this->session->set_flashdata('success', 'Profil berhasil diperbarui! ✨');
@@ -157,8 +146,6 @@ class Dashboard extends CI_Controller {
 
         $user_id = $this->session->userdata('user_id');
         $news = $this->News_model->get_news_by_id($news_id);
-
-        // Check if news exists and belongs to user
         if (empty($news) || $news['user_id'] != $user_id) {
             show_404();
         }
@@ -256,7 +243,7 @@ class Dashboard extends CI_Controller {
     private function _upload_image() {
         $config['upload_path']   = FCPATH . 'assets/uploads/';
         $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
-        $config['max_size']      = 5120; // 5MB
+        $config['max_size']      = 5120; 
         $config['file_name']     = 'news_' . time() . '_' . random_string('alnum', 8);
         $config['overwrite']     = true;
 

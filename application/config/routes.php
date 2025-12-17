@@ -24,7 +24,15 @@ $route['dashboard/create'] = 'dashboard/create';
 $route['dashboard/edit/(:num)'] = 'dashboard/edit/$1';
 $route['dashboard/delete/(:num)'] = 'dashboard/delete/$1';
 
-// API Routes (untuk AJAX)
+// API Routes 
 $route['api/like/(:num)'] = 'api/toggle_like/$1';
 $route['api/comment/add'] = 'api/add_comment';
 $route['api/comment/delete/(:num)'] = 'api/delete_comment/$1';
+
+// Admin  Routes 
+$route['admin'] = 'admin/index';                     
+$route['admin/users'] = 'admin/users';          
+$route['admin/users/ban/(:num)'] = 'admin/ban_user/$1';  
+$route['admin/users/unban/(:num)'] = 'admin/unban_user/$1'; 
+$route['admin/news'] = 'admin/news';               
+$route['admin/news/delete/(:num)'] = 'admin/delete_news/$1'; 

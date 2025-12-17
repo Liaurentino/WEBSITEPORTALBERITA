@@ -1,6 +1,4 @@
-/* ============================================
-   ADVENTURE TODAY NEWS - MAIN STYLESHEET
-   ============================================ */
+/* MAIN STYLESHEET */
 
 :root {
     --primary: #FF6B35;
@@ -18,6 +16,8 @@
     --bg-lighter: #FAFAFA;
     --border-color: #EEEEEE;
     --white: #FFFFFF;
+    --theme-blue: #1e3a8a; 
+    --theme-hover: #1e40af;
     --radius: 8px;
     --radius-lg: 12px;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -114,6 +114,7 @@ p {
 .text-right {
     text-align: right;
 }
+
 
 /* ============================================
    BUTTONS
@@ -218,152 +219,6 @@ p {
     cursor: not-allowed;
 }
 
-/* ============================================
-   ALERTS
-   ============================================ */
-
-.alert {
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-lg);
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 4px solid;
-    animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.alert-success {
-    background: #D4EDDA;
-    color: #155724;
-    border-left-color: var(--success);
-}
-
-.alert-danger {
-    background: #F8D7DA;
-    color: #721C24;
-    border-left-color: var(--danger);
-}
-
-.alert-warning {
-    background: #FFF3CD;
-    color: #856404;
-    border-left-color: var(--warning);
-}
-
-.alert-info {
-    background: #D1ECF1;
-    color: #0C5460;
-    border-left-color: var(--secondary);
-}
-
-.alert-close {
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: inherit;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-    border: none;
-    background: none;
-    padding: 0;
-}
-
-.alert-close:hover {
-    opacity: 1;
-}
-
-/* ============================================
-   NAVBAR / HEADER
-   ============================================ */
-
-.navbar {
-    background: var(--white);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--shadow-sm);
-}
-
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-brand h1 {
-    font-size: 1.8rem;
-    color: var(--secondary);
-    margin: 0;
-    font-weight: 800;
-}
-
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-}
-
-.nav-list {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-link {
-    font-weight: 500;
-    color: var(--text-gray);
-    font-size: 0.95rem;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary);
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 2px;
-}
-
-.nav-auth {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.username {
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 0.9rem;
-}
 
 /* Mobile Menu */
 .menu-toggle {
@@ -541,6 +396,8 @@ p {
 
 .section {
     padding: 4rem 0;
+    margin-left: 4rem;
+    margin-right: 4rem;
 }
 
 .section-header {
@@ -548,6 +405,7 @@ p {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2.5rem;
+    margin-left: 2rem;
 }
 
 .section-header h2 {
@@ -568,18 +426,6 @@ p {
 
 .view-all:hover {
     gap: 0.8rem;
-}
-
-/* ============================================
-   NEWS GRID & CARDS
-   ============================================ */
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
 .card {
@@ -746,50 +592,7 @@ textarea.form-control {
     gap: 2rem;
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
 
-footer {
-    background: var(--secondary);
-    color: var(--white);
-    text-align: center;
-    padding: 2.5rem 20px;
-    margin-top: 5rem;
-}
-
-footer h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--white);
-}
-
-footer p {
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 0.5rem;
-}
-
-.footer-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin: 1.5rem 0;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.9);
-    transition: var(--transition);
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.footer-divider {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 1.5rem;
-    margin-top: 1.5rem;
-}
 
 /* ============================================
    RESPONSIVE DESIGN
@@ -805,14 +608,6 @@ footer p {
         font-size: 2.8rem;
     }
 
-    .navbar-menu {
-        gap: 2rem;
-    }
-
-    .nav-list {
-        gap: 1.5rem;
-    }
-
     .form-row {
         grid-template-columns: 1fr;
     }
@@ -822,47 +617,6 @@ footer p {
     html {
         font-size: 14px;
     }
-
-    .navbar-menu {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem;
-        box-shadow: var(--shadow-md);
-        z-index: 999;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-list {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .nav-link {
-        padding: 0.8rem 0;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .nav-auth {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--border-color);
-    }
-
     .btn {
         width: 100%;
     }

@@ -1,0 +1,189 @@
+/* ========================= */
+/* ADMIN PANEL */
+/* ========================= */
+
+.admin-wrapper {
+    padding-top: 2rem;
+}
+
+/* Header */
+
+.admin-header {
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+}
+
+.admin-header p {
+    margin: 0;
+    color: var(--text-gray);
+}
+
+/* Actions */
+
+.admin-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-admin {
+    padding: 1rem 2rem;
+}
+
+/* Stats */
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.admin-stat-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.admin-stat-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #666;
+    font-weight: 600;
+}
+
+.admin-stat-card strong {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+/* ========================= */
+/* ADMIN NEWS MANAGEMENT */
+/* ========================= */
+
+.admin-page-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-page-header h1 {
+    margin: 0;
+    color: var(--primary);
+}
+
+/* Table Wrapper */
+
+.admin-table-wrapper {
+    overflow-x: auto;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Table */
+
+.admin-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+}
+
+.admin-table thead tr {
+    background: #f8f9fa;
+    border-bottom: 2px solid #eee;
+}
+.role-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.role-badge.admin {
+    background: #e2e6ea;
+    color: #333;
+}
+
+.role-badge.user {
+    background: #f1f3f5;
+    color: #555;
+}
+
+/* Status */
+
+.status {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.status-active {
+    color: green;
+}
+
+.status-banned {
+    color: red;
+}
+
+/* Success Button (Unban) */
+
+.btn-success {
+    background: green;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #0a8a0a;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table tbody tr:hover {
+    background: #fafafa;
+}
+
+/* Links inside table */
+
+.admin-table a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.admin-table a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .admin-actions {
+        flex-direction: column;
+    }
+
+    .admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .btn-admin {
+        width: 100%;
+        text-align: center;
+    }
+}

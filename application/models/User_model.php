@@ -30,7 +30,7 @@ class User_model extends CI_Model {
         return $this->db->insert('users', $data);
     }
 
-    // Update user (Bisa untuk update bio, password, dll)
+    // Update Profile User
     public function update_user($id, $data) {
         $this->db->where('id', $id);
         return $this->db->update('users', $data);
@@ -47,16 +47,14 @@ class User_model extends CI_Model {
 
     // Delete user
     public function delete_user($id) {
-        // Hapus berita user
+
         $this->db->delete('news', ['user_id' => $id]);
-        
-        // Hapus user
         $this->db->delete('users', ['id' => $id]);
         
         return true;
     }
 
-    // Get all users (admin only)
+    // Get all users For Admin
     public function get_all_users($limit = NULL) {
         $query = $this->db->order_by('created_at', 'DESC');
         
@@ -82,15 +80,12 @@ class User_model extends CI_Model {
     // Get user stats
     public function get_user_stats($user_id) {
         $stats['total_news'] = $this->db->where('user_id', $user_id)->count_all_results('news');
-        
-        // Total likes pada semua berita user
+
         $this->db->select('COUNT(l.id) as total_likes');
         $this->db->from('likes l');
         $this->db->join('news n', 'l.news_id = n.id');
         $this->db->where('n.user_id', $user_id);
         $stats['total_likes'] = $this->db->get()->row()->total_likes ?? 0;
-        
-        // Total comments pada semua berita user
         $this->db->select('COUNT(c.id) as total_comments');
         $this->db->from('comments c');
         $this->db->join('news n', 'c.news_id = n.id');

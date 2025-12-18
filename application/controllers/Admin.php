@@ -39,8 +39,6 @@ class Admin extends CI_Controller {
             redirect('admin/users');
             return;
         }
-
-        // Update is_active jadi 0
         $this->db->where('id', $user_id);
         $this->db->update('users', ['is_active' => 0]);
         

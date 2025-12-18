@@ -149,8 +149,6 @@ class Comment_model extends CI_Model {
     // Get statistics
     public function get_comment_stats() {
         $stats['total_comments'] = $this->db->count_all('comments');
-        
-        // Most commented news
         $this->db->select('news_id, COUNT(*) as comment_count, n.title, n.slug');
         $this->db->from('comments c');
         $this->db->join('news n', 'c.news_id = n.id', 'left');

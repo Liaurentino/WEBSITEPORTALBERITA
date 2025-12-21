@@ -27,7 +27,7 @@ class News_model extends CI_Model {
 }
 
     // Get latest news with user info and like count
-    public function get_latest_news($limit = 9) {
+    public function get_latest_news($limit = 6) {
         $this->db->select('n.*, u.username, u.id as user_id, COUNT(l.id) as likes_count');
         $this->db->from('news n');
         $this->db->join('users u', 'n.user_id = u.id', 'left');

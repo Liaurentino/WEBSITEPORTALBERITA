@@ -157,17 +157,6 @@
     background: #fafafa;
 }
 
-/* Links inside table */
-
-.admin-table a {
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.admin-table a:hover {
-    text-decoration: underline;
-}
-
 
 /* Responsive */
 

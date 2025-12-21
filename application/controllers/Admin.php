@@ -54,7 +54,7 @@ class Admin extends CI_Controller {
         redirect('admin/users');
     }
 
-    // MANAJEMEN HAPUS BERITA 
+
     public function news() {
         $data['title'] = 'Kelola Semua Berita';
         $data['news_list'] = $this->News_model->get_latest_news(100); 
@@ -64,6 +64,7 @@ class Admin extends CI_Controller {
         $this->load->view('layout/footer', $data);
     }
 
+    // MANAJEMEN HAPUS BERITA 
     public function delete_news($news_id) {
         $news = $this->News_model->get_news_by_id($news_id);
         

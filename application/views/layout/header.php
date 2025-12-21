@@ -82,16 +82,14 @@
                         👤 Profil
                     </a>
 
-                    <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-outline btn-logout">
+                    <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-outline2 btn-logout">
                         Logout
                     </a>
                 <?php else: ?>
                     <div class="auth-group">
                         <a href="<?php echo base_url('auth/login'); ?>" class="nav-link"><strong>Masuk</strong></a>
                         <span class="auth-divider">|</span>
-                        <a href="<?php echo base_url('auth/register'); ?>" class="btn btn-primary btn-register">
-                            Daftar
-                        </a>
+                        <a href="<?php echo base_url('auth/register'); ?>" class="btn btn-register register-link"> Daftar </a>
                     </div>
                 <?php endif; ?>
             </div>

@@ -216,7 +216,7 @@ class Api extends CI_Controller {
 
     // GET TRENDING NEWS
     public function get_trending() {
-        $limit = $this->input->get('limit', 6);
+        $limit = $this->input->get('limit');
         $trending = $this->News_model->get_trending_news($limit);
 
         echo json_encode([
@@ -229,7 +229,7 @@ class Api extends CI_Controller {
 
     // GET LATEST NEWS
     public function get_latest() {
-        $limit = $this->input->get('limit', 9);
+        $limit = $this->input->get('limit');
         $latest = $this->News_model->get_latest_news($limit);
 
         echo json_encode([

@@ -39,13 +39,13 @@
                             <?php if ($u['role'] != 'admin'): ?>
                                 <?php if ($u['is_active'] == 1): ?>
                                     <a href="<?php echo base_url('admin/ban_user/' . $u['id']); ?>"
-                                       class="btn btn-small btn-danger"
+                                       class="btn btn-small btn-danger admin-link"
                                        onclick="return confirm('Yakin ingin mem-banned user ini?');">
                                         🚫 Ban
                                     </a>
                                 <?php else: ?>
                                     <a href="<?php echo base_url('admin/unban_user/' . $u['id']); ?>"
-                                       class="btn btn-small btn-success">
+                                       class="btn btn-small btn-success admin-link">
                                         ✅ Unban
                                     </a>
                                 <?php endif; ?>

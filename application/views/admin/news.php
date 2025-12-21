@@ -33,7 +33,7 @@
                         </td>
                         <td>
                             <a href="<?php echo base_url('admin/delete_news/' . $news['id']); ?>"
-                               class="btn btn-small btn-danger"
+                               class="btn btn-small btn-danger admin-link"
                                onclick="return confirm('Hapus permanen berita ini?');">
                                 Hapus
                             </a>
